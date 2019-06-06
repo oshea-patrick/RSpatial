@@ -2,7 +2,7 @@
 \alias{poThin}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~ poThin ~~
+  ~~ poThin ~~
 }
 \description{
 %%  ~~ This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3). ~~
