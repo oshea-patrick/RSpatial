@@ -1,12 +1,11 @@
 Package: RSpatial
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Spatial Thinning and More
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Patrick J. O'Shea
+Maintainer: Patrick J. O'Shea <oshea_patrick@hotmail.com>
+Description: Right Now there is only poThin but hopefully more to come.
+License: NA
 Encoding: UTF-8
 LazyData: true
 LinkingTo: Rcpp

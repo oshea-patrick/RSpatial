@@ -6,6 +6,6 @@ getDist <- function(lon1, lat1, lon2, lat2) {
 }
 
 poThin <- function(df, spacing, dimension, lon, lat) {
-    return(df[-.Call('_RSpatial_poThin', PACKAGE = 'RSpatial', df, spacing, dimension, lon, lat),])
+    .Call('_RSpatial_poThin', PACKAGE = 'RSpatial', df, spacing, dimension, lon, lat)
 }
 
