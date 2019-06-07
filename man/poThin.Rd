@@ -33,7 +33,7 @@ This is the name of the column that contains all of the latitude data.
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-This returns a DataFrame object that has been thinned.
+This returns an array containing the indices of the DataFrame, df, that need to be deleted for it to be spatially thinned.
 }
 \references{
 %% ~put references to the literature/web site here ~
