@@ -2,10 +2,10 @@
 \alias{poThin}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-  ~~ poThin ~~
+poThin
 }
 \description{
-%%  ~~ This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3). ~~
+This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3).
 }
 \usage{
 poThin(df, 100, 5000, "lon", "lat")
@@ -13,10 +13,19 @@ poThin(df, 100, 5000, "lon", "lat")
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{df}{
-%%     ~~This is a DataFrame Object with col names denoted by the variables "lon" and "lat"~~
+This is a DataFrame Object with col names denoted by the variables "lon" and "lat".
 }
 \item{spacing}{
-%%     ~~This is the spacing that all points should be apart (in kms)~~
+This is the spacing that all points should be apart (in kms).
+}
+\item{records}{
+The number of records that the thinning algorithm will be run on.
+}
+\item{longitude_col_name}{
+This is the name of the column that contains all of the longitude data.
+}
+\item{latitude_col_name}{
+This is the name of the column that contains all of the latitude data.
 }
 
 }
@@ -24,20 +33,16 @@ poThin(df, 100, 5000, "lon", "lat")
 %%  ~~ If necessary, more details than the description above ~~
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
+This returns a DataFrame object that has been thinned.
 }
 \references{
 %% ~put references to the literature/web site here ~
 }
 \author{
-%%  ~~Patrick J. O'Shea~~
+Patrick J. O'Shea
 }
 \note{
-%%  ~~further notes~~
+This function is written in C++.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
