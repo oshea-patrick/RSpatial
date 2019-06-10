@@ -8,4 +8,5 @@ Description: Right Now there is only poThin but hopefully more to come.
 License: NA
 Encoding: UTF-8
 LazyData: true
+Imports: Rcpp
 LinkingTo: Rcpp
