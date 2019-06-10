@@ -4,7 +4,7 @@
 #include <Rcpp.h>
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export('.getDist')]]
 float getDist(float lon1, float lat1, float lon2, float lat2) {
   float R = 6378.137;
   float toRad = 3.14159/180;
@@ -20,7 +20,7 @@ float getDist(float lon1, float lat1, float lon2, float lat2) {
   return (2 * std::atan2(std::sqrt(a), std::sqrt(1 - a)) * R);
 }
 
-// [[Rcpp::export]]
+// [[Rcpp::export('.poThin')]]
 Rcpp::NumericVector poThin(Rcpp::DataFrame df, double spacing, int dimension, std::string lon, std::string lat) {
   // creates a 2d matrix for holding distances
   float start = time(NULL);
@@ -68,8 +68,6 @@ Rcpp::NumericVector poThin(Rcpp::DataFrame df, double spacing, int dimension, st
       }
     }
   }
-  
-  std::cout << "Completed in " + std::to_string(time(NULL)-start);
   
   // converts to_be_deleted into a numeric matrix
   Rcpp::NumericVector out(index);
