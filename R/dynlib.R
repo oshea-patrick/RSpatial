@@ -1,3 +1,3 @@
-#' @useDynLib RSpatial1
+#' @useDynLib RSpatial
 #' @importFrom Rcpp sourceCpp
 NULL
