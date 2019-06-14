@@ -1,5 +1,7 @@
 #returns a thinned dataFrame
-
+#' @export
+#' @example 
+#' x=1
 poThinP <- function(df, spacing, lon, lat, numCores) {
   require(RSpatial)
   require(parallel)

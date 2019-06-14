@@ -8,7 +8,7 @@ poThinP
 This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3). This is the parallel version of poThin.
 }
 \usage{
-poThin(df, 100, "lon", "lat")
+poThin(df, 100, "lon", "lat", 5)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -23,6 +23,9 @@ This is the name of the column that contains all of the longitude data.
 }
 \item{lat}{
 This is the name of the column that contains all of the latitude data.
+}
+\item{numCores}{
+The Number of cores the function may use.
 }
 
 }
