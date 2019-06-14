@@ -1,14 +1,14 @@
-\name{poThin}
-\alias{poThin}
+\name{poThinP}
+\alias{poThinP}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-poThin
+poThinP
 }
 \description{
-This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3).
+This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3). This is the parallel version of poThin.
 }
 \usage{
-poThin(df, 100, 5000, "lon", "lat")
+poThin(df, 100, "lon", "lat")
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
@@ -17,9 +17,6 @@ This is a DataFrame Object with col names denoted by the variables "lon" and "la
 }
 \item{spacing}{
 This is the spacing that all points should be apart (in kms).
-}
-\item{dimensiom}{
-The number of records that the thinning algorithm will be run on.
 }
 \item{lon}{
 This is the name of the column that contains all of the longitude data.
@@ -42,7 +39,7 @@ This returns an array containing the indices of the DataFrame, df, that need to 
 Patrick J. O'Shea
 }
 \note{
-This function is written in C++.
+This function uses both R and C++.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~

@@ -5,6 +5,20 @@
 
 using namespace Rcpp;
 
+// classifySpatiallyByBlocks
+Rcpp::NumericVector classifySpatiallyByBlocks(Rcpp::DataFrame df, std::string lon, std::string lat, int size);
+RcppExport SEXP _RSpatial_classifySpatiallyByBlocks(SEXP dfSEXP, SEXP lonSEXP, SEXP latSEXP, SEXP sizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< std::string >::type lon(lonSEXP);
+    Rcpp::traits::input_parameter< std::string >::type lat(latSEXP);
+    Rcpp::traits::input_parameter< int >::type size(sizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(classifySpatiallyByBlocks(df, lon, lat, size));
+    return rcpp_result_gen;
+END_RCPP
+}
 // getDist
 float getDist(float lon1, float lat1, float lon2, float lat2);
 RcppExport SEXP _RSpatial_getDist(SEXP lon1SEXP, SEXP lat1SEXP, SEXP lon2SEXP, SEXP lat2SEXP) {
@@ -36,6 +50,7 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
+    {"_RSpatial_classifySpatiallyByBlocks", (DL_FUNC) &_RSpatial_classifySpatiallyByBlocks, 4},
     {"_RSpatial_getDist", (DL_FUNC) &_RSpatial_getDist, 4},
     {"_RSpatial_poThin", (DL_FUNC) &_RSpatial_poThin, 5},
     {NULL, NULL, 0}
