@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 #include <string>
 
-// [[Rcpp::export]]
+// [[Rcpp::export('.classifySpatiallyByBlocks')]]
 Rcpp::NumericVector classifySpatiallyByBlocks(Rcpp::DataFrame df, std::string lon, std::string lat, int size) {
   //takes in Dataframe and splits it into latitude and longtude cols
   Rcpp::NumericVector out(size);
