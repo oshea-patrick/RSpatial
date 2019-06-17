@@ -3,8 +3,8 @@
 #' @example 
 #' x=1
 poThinP <- function(df, spacing, lon, lat, numCores) {
-  requireNamespace(RSpatial)
-  requireNamespace(parallel)
+  require(RSpatial)
+  require(parallel)
   
   #wrapped function
   poThinWrap <- function(testing) {
