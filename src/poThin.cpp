@@ -22,8 +22,6 @@ float getDist(float lon1, float lat1, float lon2, float lat2) {
 
 // [[Rcpp::export('.poThin')]]
 Rcpp::NumericVector poThin(Rcpp::DataFrame df, double spacing, int dimension, std::string lon, std::string lat) {
-  // creates a 2d matrix for holding distances
-  float start = time(NULL);
   // creates Distance Matrix and all of the variables to keep track of indices
   float** distMatrix = new float*[dimension];
   int index  = 0;
@@ -38,8 +36,8 @@ Rcpp::NumericVector poThin(Rcpp::DataFrame df, double spacing, int dimension, st
   // creates distances and initializes diagonals to -1 for pruning purposes
   for (int i = 0; i < dimension; i++) {
     for (int g = 0; g < dimension; g++) {
-      if (i != g)
-       distMatrix[i][g] = getDist(lon_vector[i], lat_vector[i], lon_vector[g], lat_vector[g]);
+      if (g > i)
+        distMatrix[i][g] = getDist(lon_vector[i], lat_vector[i], lon_vector[g], lat_vector[g]);
       else
         distMatrix[i][g] = -1;
     }
@@ -47,7 +45,7 @@ Rcpp::NumericVector poThin(Rcpp::DataFrame df, double spacing, int dimension, st
   
   // figures out which points will be deleted
   for (int col = 0; col < dimension; col++) {
-    for (int row  = 0; row < dimension; row++) {
+    for (int row  = col + 1; row < dimension; row++) {
       if (distMatrix[col][row] != -1 && distMatrix[col][row] > spacing){
         
         for (int match = 0; match < dimension; match++) {

@@ -3,8 +3,8 @@
 #' @example 
 #' x=1
 poThinP <- function(df, spacing, lon, lat, numCores) {
-  require(RSpatial)
-  require(parallel)
+  requireNamespace(RSpatial)
+  requireNamespace(parallel)
   
   #wrapped function
   poThinWrap <- function(testing) {
@@ -19,7 +19,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   indices <- 1:length(df$lon)
   df <- cbind(df, blocks, indices)
   colnames(df) <- c(lon, lat, "blocks", "originalIndices")
-  cl <- makeCluster(numCores)
+  cl <- parallel::makeCluster(numCores)
   
   #define "globally"
   spacing = spacing
@@ -35,7 +35,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
     n = n+1
   }
   
-  clusterExport(cl,
+  parallel::clusterExport(cl,
                 c(
                  "spacing",
                   "lon1",
@@ -43,8 +43,8 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
                 ),
                 envir = environment())
 
-  lists <- parLapply(cl, lists, poThinWrap)
-  stopCluster(cl)
+  lists <- parallel::parLapply(cl, lists, poThinWrap)
+  parallel::stopCluster(cl)
   
   unlisted <- unlist(lists)
   thinnedDf <- df[-unlisted, ]
