@@ -2,7 +2,7 @@
 #include <string>
 
 // [[Rcpp::export('.classifySpatiallyByBlocks')]]
-Rcpp::NumericVector classifySpatiallyByBlocks(Rcpp::DataFrame df, std::string lon, std::string lat, int size) {
+Rcpp::NumericVector classifySpatiallyByBlocks(Rcpp::DataFrame df, std::string lon, std::string lat, int size, int blockSize) {
   //takes in Dataframe and splits it into latitude and longtude cols
   Rcpp::NumericVector out(size);
   // lon goes from 0 to -180 and 0 to 180, at 180 they converge
@@ -17,9 +17,9 @@ Rcpp::NumericVector classifySpatiallyByBlocks(Rcpp::DataFrame df, std::string lo
   
   for (int i =0; i < size; i++) {
     // first classfiy by longitude
-    current_index += std::abs(lon_vector[i]/10);
+    current_index += std::abs(lon_vector[i]/blockSize);
     // then classify by latitude
-    current_index += std::abs(19*(lat_vector[i]/10));
+    current_index += std::abs(19*(lat_vector[i]/blockSize));
     //store value
     out[i] = current_index;
     // reset current_index

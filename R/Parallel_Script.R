@@ -14,7 +14,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   }
   
   
-  blocks <- classifySpatiallyByBlocks(df=df,lon = lon, lat = lat, size = length(df$lon))
+  blocks <- classifySpatiallyByBlocks(df=df,lon = lon, lat = lat, size = length(df$lon), blockSize = 10)
   df <- df[,c(lon, lat)]
   indices <- 1:length(df$lon)
   df <- cbind(df, blocks, indices)
@@ -48,6 +48,8 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   
   unlisted <- unlist(lists)
   thinnedDf <- df[-unlisted, ]
+  
+  thinnedDf <- thinnedDf[,c(lon, lat)]
   
   return(thinnedDf[-poThin(df=thinnedDf, spacing = spacing, dimension = length(thinnedDf$lon), lon = lon, lat = lat), ])
 }
