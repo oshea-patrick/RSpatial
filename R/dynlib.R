@@ -30,6 +30,6 @@ poThin <- function(df, spacing, dimension, lon, lat) {
 #' @example 
 #' x=1
 #' 
-.classifySpatiallyByBlocks <- function(df, lon, lat, size, blockSize) {
+classifySpatiallyByBlocks <- function(df, lon, lat, size, blockSize) {
   .Call('_RSpatial_classifySpatiallyByBlocks', PACKAGE = 'RSpatial', df, lon, lat, size, blockSize)
 }
