@@ -1,6 +1,6 @@
 #returns a thinned dataFrame
 #' @export
-#' @example 
+#' @example
 #' x=1
 poThinP <- function(df, spacing, lon, lat, numCores) {
   require(RSpatial)
@@ -53,7 +53,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   blocks <- classifySpatiallyByBlocks(df=thinnedDf,lon = lon, lat = lat, size = length(thinnedDf$lon), blockSize = 20)
   thinnedDf <- thinnedDf[,c(lon, lat)]
   indices <- 1:length(thinnedDf$lon)
-  df <- cbind(df, blocks, indices)
+  thinnedDf <- cbind(thinnedDf, blocks, indices)
   colnames(thinnedDf) <- c(lon, lat, "blocks", "originalIndices")
   
   
