@@ -20,6 +20,62 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// isInsideConvexHull
+bool isInsideConvexHull(Rcpp::DataFrame hulls, double checkx, double checky, int size);
+RcppExport SEXP _RSpatial_isInsideConvexHull(SEXP hullsSEXP, SEXP checkxSEXP, SEXP checkySEXP, SEXP sizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type hulls(hullsSEXP);
+    Rcpp::traits::input_parameter< double >::type checkx(checkxSEXP);
+    Rcpp::traits::input_parameter< double >::type checky(checkySEXP);
+    Rcpp::traits::input_parameter< int >::type size(sizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(isInsideConvexHull(hulls, checkx, checky, size));
+    return rcpp_result_gen;
+END_RCPP
+}
+// getAVN
+Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericVector lat, Rcpp::NumericVector values, int size);
+RcppExport SEXP _RSpatial_getAVN(SEXP valueSEXP, SEXP lonSEXP, SEXP latSEXP, SEXP valuesSEXP, SEXP sizeSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< double >::type value(valueSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type lon(lonSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type lat(latSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type values(valuesSEXP);
+    Rcpp::traits::input_parameter< int >::type size(sizeSEXP);
+    rcpp_result_gen = Rcpp::wrap(getAVN(value, lon, lat, values, size));
+    return rcpp_result_gen;
+END_RCPP
+}
+// mutateNumber
+Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector two);
+RcppExport SEXP _RSpatial_mutateNumber(SEXP oneSEXP, SEXP twoSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type one(oneSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type two(twoSEXP);
+    rcpp_result_gen = Rcpp::wrap(mutateNumber(one, two));
+    return rcpp_result_gen;
+END_RCPP
+}
+// createNextGen
+Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues, double mutationRate, int size, Rcpp::NumericVector randoms);
+RcppExport SEXP _RSpatial_createNextGen(SEXP dfSEXP, SEXP avnValuesSEXP, SEXP mutationRateSEXP, SEXP sizeSEXP, SEXP randomsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type avnValues(avnValuesSEXP);
+    Rcpp::traits::input_parameter< double >::type mutationRate(mutationRateSEXP);
+    Rcpp::traits::input_parameter< int >::type size(sizeSEXP);
+    Rcpp::traits::input_parameter< Rcpp::NumericVector >::type randoms(randomsSEXP);
+    rcpp_result_gen = Rcpp::wrap(createNextGen(df, avnValues, mutationRate, size, randoms));
+    return rcpp_result_gen;
+END_RCPP
+}
 // getDist
 float getDist(float lon1, float lat1, float lon2, float lat2);
 RcppExport SEXP _RSpatial_getDist(SEXP lon1SEXP, SEXP lat1SEXP, SEXP lon2SEXP, SEXP lat2SEXP) {
@@ -52,6 +108,10 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RSpatial_classifySpatiallyByBlocks", (DL_FUNC) &_RSpatial_classifySpatiallyByBlocks, 5},
+    {"_RSpatial_isInsideConvexHull", (DL_FUNC) &_RSpatial_isInsideConvexHull, 4},
+    {"_RSpatial_getAVN", (DL_FUNC) &_RSpatial_getAVN, 5},
+    {"_RSpatial_mutateNumber", (DL_FUNC) &_RSpatial_mutateNumber, 2},
+    {"_RSpatial_createNextGen", (DL_FUNC) &_RSpatial_createNextGen, 5},
     {"_RSpatial_getDist", (DL_FUNC) &_RSpatial_getDist, 4},
     {"_RSpatial_poThin", (DL_FUNC) &_RSpatial_poThin, 5},
     {NULL, NULL, 0}

@@ -5,6 +5,22 @@
     .Call('_RSpatial_classifySpatiallyByBlocks', PACKAGE = 'RSpatial', df, lon, lat, size, blockSize)
 }
 
+.isInsideConvexHull <- function(hulls, checkx, checky, size) {
+    .Call('_RSpatial_isInsideConvexHull', PACKAGE = 'RSpatial', hulls, checkx, checky, size)
+}
+
+.getAVN <- function(value, lon, lat, values, size) {
+    .Call('_RSpatial_getAVN', PACKAGE = 'RSpatial', value, lon, lat, values, size)
+}
+
+.mutateNumber <- function(one, two) {
+    .Call('_RSpatial_mutateNumber', PACKAGE = 'RSpatial', one, two)
+}
+
+.createNextGen <- function(df, avnValues, mutationRate, size, randoms) {
+    .Call('_RSpatial_createNextGen', PACKAGE = 'RSpatial', df, avnValues, mutationRate, size, randoms)
+}
+
 .getDist <- function(lon1, lat1, lon2, lat2) {
     .Call('_RSpatial_getDist', PACKAGE = 'RSpatial', lon1, lat1, lon2, lat2)
 }
