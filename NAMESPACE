@@ -2,6 +2,7 @@
 
 export(classifySpatiallyByBlocks)
 export(createNextGen)
+export(isInsideConvexHull)
 export(poThin)
 export(poThinP)
 importFrom(Rcpp,sourceCpp)
