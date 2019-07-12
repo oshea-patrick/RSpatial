@@ -17,8 +17,8 @@
     .Call('_RSpatial_mutateNumber', PACKAGE = 'RSpatial', one, two)
 }
 
-.createNextGen <- function(df, avnValues, mutationRate, size, randoms) {
-    .Call('_RSpatial_createNextGen', PACKAGE = 'RSpatial', df, avnValues, mutationRate, size, randoms)
+.createNextGen <- function(df, avnValues, mutationRate, explore, size, randoms) {
+    .Call('_RSpatial_createNextGen', PACKAGE = 'RSpatial', df, avnValues, mutationRate, explore, size, randoms)
 }
 
 .getDist <- function(lon1, lat1, lon2, lat2) {

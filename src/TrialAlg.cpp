@@ -9,13 +9,8 @@
 // [[Rcpp::export('.getAVN')]]
 Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericVector lat, Rcpp::NumericVector values, int size) {
   Rcpp::NumericVector out(2);
-  //std::cout << value;
-  //std::cout << "\n";
   for (int i = 0; i < size; i++) {
-   // std::cout << "values " << i << " " << values[i] << "\n";
     if (values[i] >= value) {
-     // std::cout << "lat " << lat[i] << "\n";
-    //  std::cout << "lon " << lon[i] << "\n";
       out[0] = lat[i];
       out[1] = lon[i];
       break;
@@ -28,7 +23,8 @@ Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericV
 // [[Rcpp::export('.mutateNumber')]]
 Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector two) {
   Rcpp::NumericVector out(2);
-  switch (rand() % 4) {
+  switch (rand() % 8) {
+  // normal cases
   case 0:
     out[0] = one[0];
     out[1] = one[1];
@@ -45,12 +41,30 @@ Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector tw
     out[0] = two[0];
     out[1] = one[1];
     break;
+    
+    
+  case 4:
+    out[0] = one[0];
+    out[1] = (one[1] + two[1]) /2.0;
+    break;
+  case 5:
+    out[0] = two[0];
+    out[1] = (one[1] + two[1]) /2.0;
+    break;
+  case 6:
+    out[0] = (one[0] + two[0]) /2.0;
+    out[1] = one[1];
+    break;
+  case 7:
+    out[0] = (one[0] + two[0]) /2.0;
+    out[1] = two[1];
+    break;  
   }
   return out;
 }
 // Expects an array of pointers containing latitude and longitude as 
 // [[Rcpp::export('.createNextGen')]]
-Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues, double mutationRate, int size, Rcpp::NumericVector randoms) {
+Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues, double mutationRate, int explore, int size, Rcpp::NumericVector randoms) {
   Rcpp::NumericVector lon_vector= df["lon"];
   Rcpp::NumericVector lat_vector= df["lat"];
   Rcpp::NumericVector out_lon(size);
@@ -67,8 +81,8 @@ Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues,
     Rcpp::NumericVector temp = mutateNumber(getAVN((one % 100000)/100000.0, lon_vector, lat_vector, avnValues, size), getAVN((two % 100000)/100000.0, lon_vector, lat_vector, avnValues, size));
     
     if (random < mutationRate) {
-      out_lat[g] = temp[0] +  (rand() % 10 - 5);
-      out_lon[g] = temp[1] + (rand() % 10 - 5) ;
+      out_lat[g] = temp[0] +  (rand() % (2*explore) - explore);
+      out_lon[g] = temp[1] + (rand() % (2*explore) - explore) ;
     }
     else {
       out_lat[g] = temp[0];

@@ -48,8 +48,8 @@ classifySpatiallyByBlocks <- function(df, lon, lat, size, blockSize) {
 #' @example 
 #' x=1
 #' 
-createNextGen <- function(df, avnValues, mutationRate, size, randoms) {
-  .Call('_RSpatial_createNextGen', PACKAGE = 'RSpatial', df, avnValues, mutationRate, size, randoms)
+createNextGen <- function(df, avnValues, mutationRate, explore, size, randoms) {
+  .Call('_RSpatial_createNextGen', PACKAGE = 'RSpatial', df, avnValues, mutationRate, explore, size, randoms)
 }
 
 #' isInsideConvexHull

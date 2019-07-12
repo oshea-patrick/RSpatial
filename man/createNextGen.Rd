@@ -4,7 +4,7 @@
 \alias{createNextGen}
 \title{createNextGen}
 \usage{
-createNextGen(df, avnValues, mutationRate, size, randoms)
+createNextGen(df, avnValues, mutationRate, explore, size, randoms)
 }
 \arguments{
 \item{randoms}{}
