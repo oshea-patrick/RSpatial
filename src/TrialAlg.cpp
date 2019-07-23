@@ -16,6 +16,7 @@ Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericV
       break;
     }
   }
+  std::cout << "Out[0] " << out[0] << " out[1] " << out[1] << "\n";
   return out;
 }
 
@@ -77,7 +78,6 @@ Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues,
     long one = rand();
     long two = rand();
     Rcpp::NumericVector temp = mutateNumber(getAVN((one % 100000)/100000.0, lon_vector, lat_vector, avnValues, size), getAVN((two % 100000)/100000.0, lon_vector, lat_vector, avnValues, size));
-    std::cout << "Temp[0] " << temp[0] << " Temp[1] " << temp[1] << "\n"; 
     if (random < mutationRate) {
       out_lat[g] = temp[0] +  (rand() % (2*explore) - explore);
       out_lon[g] = temp[1] + (rand() % (2*explore) - explore) ;
@@ -86,7 +86,6 @@ Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues,
       out_lat[g] = temp[0];
       out_lon[g] = temp[1];
     }
-    std::cout << "After Temp[0] " << temp[0] << " Temp[1] " << temp[1] << "\n"; 
   }
   
   Rcpp::DataFrame toBeReturned = 
