@@ -10,6 +10,7 @@
 Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericVector lat, Rcpp::NumericVector values, int size) {
   Rcpp::NumericVector out(2);
   for (int i = 0; i < size; i++) {
+    std::cout << "Value " << value << " Values[i] " << values[i] << "\n"; 
     if (values[i] >= value) {
       out[0] = lat[i];
       out[1] = lon[i];
