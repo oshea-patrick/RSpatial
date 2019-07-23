@@ -26,10 +26,7 @@ Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericV
 Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector two) {
   Rcpp::NumericVector out(2);
   int random = (int)(rand() % 8);
-<<<<<<< HEAD
-=======
   std::cout << "Random in mutateNum " << random << "\n";
->>>>>>> cda46b79d08cef9086982405a07f6852feebba2a
   switch (random) {
   // normal cases
   case 0:
