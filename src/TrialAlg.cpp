@@ -9,10 +9,12 @@
 // [[Rcpp::export('.getAVN')]]
 Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericVector lat, Rcpp::NumericVector values, int size) {
   Rcpp::NumericVector out(2);
+  std::cout << "Value: " << value << "\n";
   for (int i = 0; i < size; i++) {
     if (values[i] >= value) {
       out[0] = lat[i];
       out[1] = lon[i];
+      std::cout << "Breaking from loop and thus found AVN \n";
       break;
     }
   }
@@ -23,7 +25,9 @@ Rcpp::NumericVector getAVN(double value, Rcpp::NumericVector lon, Rcpp::NumericV
 // [[Rcpp::export('.mutateNumber')]]
 Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector two) {
   Rcpp::NumericVector out(2);
-  switch (rand() % 8) {
+  int random = (int)(rand() % 8);
+  std::cout << "Random in mutateNum " << random << "\n";
+  switch (random) {
   // normal cases
   case 0:
     out[0] = one[0];
@@ -41,8 +45,6 @@ Rcpp::NumericVector mutateNumber(Rcpp::NumericVector one, Rcpp::NumericVector tw
     out[0] = two[0];
     out[1] = one[1];
     break;
-    
-    
   case 4:
     out[0] = one[0];
     out[1] = (one[1] + two[1]) /2.0;
