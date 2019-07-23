@@ -89,7 +89,7 @@ Rcpp::DataFrame createNextGen(Rcpp::DataFrame df, Rcpp::NumericVector avnValues,
       out_lat[g] = temp[0];
       out_lon[g] = temp[1];
     }
-    std::cout << " After Temp[0] " << temp[0] << " Temp[1] " << temp[1] << "\n"; 
+    std::cout << "After Temp[0] " << temp[0] << " Temp[1] " << temp[1] << "\n"; 
   }
   
   Rcpp::DataFrame toBeReturned = 
