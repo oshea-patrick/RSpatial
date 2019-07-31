@@ -1,6 +1,5 @@
 \name{createNextGen}
 \alias{createNextGen}
-createNextGen
 \title{
 createNextGen
 }
