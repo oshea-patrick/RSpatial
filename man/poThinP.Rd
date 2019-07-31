@@ -51,14 +51,16 @@ This function uses both R and C++.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
+# creating data
+lon <- seq(1,100, by = .1)
+lat <- seq(1,100, by = .1)
+loc <- cbind(lon, lat)
+loc <- as.data.frame(loc)
+# Names the data so it's easier to see
+colnames(loc) <- c('lon', 'lat')
+# Corrects data format
+loc <- as.data.frame(loc)
+loc <- poThinP(loc, 50, "lon", "lat", 2)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
