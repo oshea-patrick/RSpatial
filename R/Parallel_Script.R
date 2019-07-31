@@ -8,17 +8,14 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   
   #wrapped function
   poThinWrap <- function(testing) {
-    vec = (RSpatial::poThin(df = testing, spacing = spacing, dimension = length(testing$lon),lon = lon1, lat=lat1))
-    thinned = testing[-vec, ]
-    return(thinned$originalIndices)
+    return (RSpatial::poThin(df = testing, spacing = spacing, dimension = length(testing$lon),lon = lon1, lat=lat1))
   }
   
   
   blocks <- classifySpatiallyByBlocks(df=df,lon = lon, lat = lat, size = length(df$lon), blockSize = 10)
   df <- df[,c(lon, lat)]
-  indices <- 1:length(df$lon)
-  df <- cbind(df, blocks, indices)
-  colnames(df) <- c(lon, lat, "blocks", "originalIndices")
+  df <- cbind(df, blocks)
+  colnames(df) <- c(lon, lat, "blocks")
   cl <- parallel::makeCluster(numCores)
   
   #define "globally"
@@ -52,9 +49,8 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   
   blocks <- classifySpatiallyByBlocks(df=thinnedDf,lon = lon, lat = lat, size = length(thinnedDf$lon), blockSize = 20)
   thinnedDf <- thinnedDf[,c(lon, lat)]
-  indices <- 1:length(thinnedDf$lon)
-  thinnedDf <- cbind(thinnedDf, blocks, indices)
-  colnames(thinnedDf) <- c(lon, lat, "blocks", "originalIndices")
+  thinnedDf <- cbind(thinnedDf, blocks)
+  colnames(thinnedDf) <- c(lon, lat, "blocks")
   
   
   lists <- list()
