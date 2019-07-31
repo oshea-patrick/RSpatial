@@ -1,6 +1,5 @@
 \name{classifySpatiallyByBlocks}
 \alias{classifySpatiallyByBlocks}
-classifySpatiallyByBlocks
 \title{
 classifySpatiallyByBlocks
 }
