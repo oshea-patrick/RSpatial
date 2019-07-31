@@ -12,7 +12,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   }
   
   
-  blocks <- classifySpatiallyByBlocks(df=df,lon = lon, lat = lat, size = length(df$lon), blockSize = 10)
+  blocks <- RSpatial::classifySpatiallyByBlocks(df=df,lon = lon, lat = lat, size = length(df$lon), blockSize = 10)
   df <- df[,c(lon, lat)]
   df <- cbind(df, blocks)
   colnames(df) <- c(lon, lat, "blocks")
