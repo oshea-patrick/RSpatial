@@ -9,7 +9,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   #wrapped function
   poThinWrap <- function(testing) {
     vec = (RSpatial::poThin(df = testing, spacing = spacing, dimension = length(testing$lon),lon = lon1, lat=lat1))
-    thinned = testing[vec, ]
+    thinned = testing[-vec, ]
     return(thinned$originalIndices)
   }
   
