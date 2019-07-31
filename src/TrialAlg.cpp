@@ -3,7 +3,6 @@
 #include <ctime>	
 #include <cstdlib>	
 
-
 // returns a lon and lat pair (haven't decided yet which order)
 // the indices of lon lat and the values must all be corresponding
 // [[Rcpp::export('.getAVN')]]

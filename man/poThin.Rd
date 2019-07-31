@@ -43,6 +43,8 @@ Patrick J. O'Shea
 }
 \note{
 This function is written in C++.
+
+Large (> 1,000,000 occ) datasets may have some RAM issues.
 }
 
 %% ~Make other sections like Warning with \section{Warning }{....} ~
@@ -51,14 +53,27 @@ This function is written in C++.
 %% ~~objects to See Also as \code{\link{help}}, ~~~
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
+# creating data
+lon <- seq(1,100, by = .1)
+lat <- seq(1,100, by = .1)
+loc <- cbind(lon, lat)
+loc <- as.data.frame(loc)
+# Names the data so it's easier to see
+colnames(loc) <- c('lon', 'lat')
+# Corrects data format
+loc <- as.data.frame(loc)
 
-## The function is currently defined as
-function (x) 
-{
-  }
+# Gets Indices to be Thinned
+thinned <-
+  poThin(
+    df = loc,
+    spacing = 50,
+    dimension = length(loc$lon),
+    lon = "lon",
+    lat = "lat"
+  )
+# Removes Indices Resulting in Thinned Data
+loc <- loc[-thinned,]
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
