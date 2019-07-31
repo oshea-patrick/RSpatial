@@ -56,7 +56,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   lists <- list()
   n=1
   for (i in unique(thinnedDf$blocks)) {
-    lists[[n]] <- df[which(thinnedDf$blocks == i), ]
+    lists[[n]] <- thinnedDf[which(thinnedDf$blocks == i), ]
     n = n+1
   }
   
@@ -71,7 +71,7 @@ poThinP <- function(df, spacing, lon, lat, numCores) {
   parallel::stopCluster(cl)
   
   #last Ditch Thinning just in case
-  ld <- poThin(df = thinnedDf, spacing = spacing, dimension = length(thinnedDf$lon),lon = lon1, lat=lat1)
+  ld <- poThin(df = thinnedDf, spacing = spacing, dimension = length(thinnedDf$lon),lon = lon, lat=lat)
   thinnedDf <- thinnedDf[-ld, ]
   
   return(thinnedDf)
