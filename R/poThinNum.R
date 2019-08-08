@@ -38,6 +38,6 @@ poThinNum <- function(df, lon, lat, num, maxRounds) {
       break
   }
   
-  return(df[-thinned, ])
+  return(df)
   
 }
