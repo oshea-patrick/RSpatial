@@ -68,3 +68,49 @@ createNextGen <- function(df, avnValues, mutationRate, explore, size, randoms) {
 isInsideConvexHull <- function(hulls, checkx, checky, size) {
   .Call('_RSpatial_isInsideConvexHull', PACKAGE = 'RSpatial', hulls, checkx, checky, size)
 }
+
+#' rasterMaker
+#' 
+#' This is a Test
+#' 
+#' @param df
+#' @param minX
+#' @param maxY
+#' @param nCols
+#' @param nRows
+#' @param sizeOfGen
+#' @param sizeOfList
+#' @param degree
+#' @param block
+#' 
+#' @export
+#' @example 
+#' x=1
+#' 
+rasterMaker <- function(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block) {
+  .Call('_RSpatial_rasterMaker', PACKAGE = 'RSpatial', df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block)
+}
+
+#' rasterMakerAdjust
+#' 
+#' This is a Test
+#' 
+#' @param df
+#' @param minX
+#' @param maxY
+#' @param nCols
+#' @param nRows
+#' @param sizeOfGen
+#' @param sizeOfList
+#' @param degree
+#' @param block
+#' @param horizontal
+#' @param vertical
+#' 
+#' @export
+#' @example 
+#' x=1
+#' 
+rasterMakerAdjust <- function(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block, horizontal, vertical) {
+  .Call('_RSpatial_rasterMakerAdjust', PACKAGE = 'RSpatial', df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block, horizontal, vertical)
+}

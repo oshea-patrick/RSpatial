@@ -106,6 +106,46 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// rasterMaker
+Rcpp::NumericVector rasterMaker(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen, int sizeOfList, int degree, bool block);
+RcppExport SEXP _RSpatial_rasterMaker(SEXP dfSEXP, SEXP minXSEXP, SEXP maxYSEXP, SEXP nColsSEXP, SEXP nRowsSEXP, SEXP sizeOfGenSEXP, SEXP sizeOfListSEXP, SEXP degreeSEXP, SEXP blockSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< int >::type minX(minXSEXP);
+    Rcpp::traits::input_parameter< int >::type maxY(maxYSEXP);
+    Rcpp::traits::input_parameter< int >::type nCols(nColsSEXP);
+    Rcpp::traits::input_parameter< int >::type nRows(nRowsSEXP);
+    Rcpp::traits::input_parameter< int >::type sizeOfGen(sizeOfGenSEXP);
+    Rcpp::traits::input_parameter< int >::type sizeOfList(sizeOfListSEXP);
+    Rcpp::traits::input_parameter< int >::type degree(degreeSEXP);
+    Rcpp::traits::input_parameter< bool >::type block(blockSEXP);
+    rcpp_result_gen = Rcpp::wrap(rasterMaker(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block));
+    return rcpp_result_gen;
+END_RCPP
+}
+// rasterMakerAdjust
+Rcpp::NumericVector rasterMakerAdjust(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen, int sizeOfList, int degree, bool block, int horizontal, int vertical);
+RcppExport SEXP _RSpatial_rasterMakerAdjust(SEXP dfSEXP, SEXP minXSEXP, SEXP maxYSEXP, SEXP nColsSEXP, SEXP nRowsSEXP, SEXP sizeOfGenSEXP, SEXP sizeOfListSEXP, SEXP degreeSEXP, SEXP blockSEXP, SEXP horizontalSEXP, SEXP verticalSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< Rcpp::DataFrame >::type df(dfSEXP);
+    Rcpp::traits::input_parameter< int >::type minX(minXSEXP);
+    Rcpp::traits::input_parameter< int >::type maxY(maxYSEXP);
+    Rcpp::traits::input_parameter< int >::type nCols(nColsSEXP);
+    Rcpp::traits::input_parameter< int >::type nRows(nRowsSEXP);
+    Rcpp::traits::input_parameter< int >::type sizeOfGen(sizeOfGenSEXP);
+    Rcpp::traits::input_parameter< int >::type sizeOfList(sizeOfListSEXP);
+    Rcpp::traits::input_parameter< int >::type degree(degreeSEXP);
+    Rcpp::traits::input_parameter< bool >::type block(blockSEXP);
+    Rcpp::traits::input_parameter< int >::type horizontal(horizontalSEXP);
+    Rcpp::traits::input_parameter< int >::type vertical(verticalSEXP);
+    rcpp_result_gen = Rcpp::wrap(rasterMakerAdjust(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block, horizontal, vertical));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_RSpatial_classifySpatiallyByBlocks", (DL_FUNC) &_RSpatial_classifySpatiallyByBlocks, 5},
@@ -115,6 +155,8 @@ static const R_CallMethodDef CallEntries[] = {
     {"_RSpatial_createNextGen", (DL_FUNC) &_RSpatial_createNextGen, 6},
     {"_RSpatial_getDist", (DL_FUNC) &_RSpatial_getDist, 4},
     {"_RSpatial_poThin", (DL_FUNC) &_RSpatial_poThin, 5},
+    {"_RSpatial_rasterMaker", (DL_FUNC) &_RSpatial_rasterMaker, 9},
+    {"_RSpatial_rasterMakerAdjust", (DL_FUNC) &_RSpatial_rasterMakerAdjust, 11},
     {NULL, NULL, 0}
 };
 

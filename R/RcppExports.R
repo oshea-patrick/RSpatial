@@ -29,3 +29,11 @@
     .Call('_RSpatial_poThin', PACKAGE = 'RSpatial', df, spacing, dimension, lon, lat)
 }
 
+.rasterMaker <- function(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block) {
+    .Call('_RSpatial_rasterMaker', PACKAGE = 'RSpatial', df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block)
+}
+
+.rasterMakerAdjust <- function(df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block, horizontal, vertical) {
+    .Call('_RSpatial_rasterMakerAdjust', PACKAGE = 'RSpatial', df, minX, maxY, nCols, nRows, sizeOfGen, sizeOfList, degree, block, horizontal, vertical)
+}
+
