@@ -9,7 +9,7 @@ bool isValid(double num, double range) {
   return (num >= 0 && num < range);
 }
 
-Rcpp::NumericVector rasterMaker(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen,int sizeOfList, int degree, bool block) {
+Rcpp::NumericVector rasterMaker(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen, int sizeOfList, int degree, bool block) {
   Rcpp::NumericVector out(nCols*pow(100, degree)*nRows);
   
   Rcpp::NumericVector lon_vector= df["lon"];

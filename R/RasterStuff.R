@@ -91,7 +91,7 @@ getValue <- function(rast, x, y, degree) {
 }
 
 appendValues <- function(df, rast) {
-  rastOut <- simulateDistribution(df, 500, 0, TRUE, FALSE, 0, 0, rast)
+  rastOut <- simulateDistribution(df = df, gen = 200, degree = 0, block = TRUE, adjust = FALSE, vert = 0, hori = 0, rastIn = rast)
   values <- rep(0, length(df$lon))
   for (i in 1:length(values))
     values[i] <- getValue(rastOut, df$lon[i], df$lat[i], 0)
