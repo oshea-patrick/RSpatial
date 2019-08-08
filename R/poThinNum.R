@@ -33,11 +33,15 @@ poThinNum <- function(df, lon, lat, num, maxRounds) {
     last <- last * correction
     if (removed != 0)
       correction = (length(df$lat) - num) / removed
+    else {
+      round = round - 1
+    }
+      
     round = round + 1
     if (round > maxRounds)
       break
   }
   
-  return(df)
+  return(df[-thinned, ])
   
 }
