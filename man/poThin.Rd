@@ -6,6 +6,25 @@ poThin
 }
 \description{
 This Algorithm spatially thins a dataset by the parameter, spacing. After the thinning, all the points will be at least spacing apart. This algorthm is O(n^3).
+
+The algorithm is as follows:
+
+1) Create a distance matrix between all the points
+
+2) Initialize diagonals to -1 (-1 will be used in the algorithm as an unecessary comaprison and thus for pruning)
+
+3) For each point, i.e. each row in the matrix, see if any point is less than the spacing parameter in realation to said point
+
+---a) If no point is found, do nothing
+  
+---b) If a point if found, do (4).
+  
+4) For each point in the row of the point that was less than the spacing parameter, see if any other point exists that is greater than the spacing parameter
+
+---a) If no point is found then do nothing (There are not a lot of point nearby this point and thus it may be important)
+  
+---b) Otherwise set all indices in the row and column of this point to -1 and save the index of the point so it can be removed
+
 }
 \usage{
 poThin(df, spacing, dimension, "lon", "lat")
