@@ -9,7 +9,6 @@ bool isValid(double num, double range) {
   return (num >= 0 && num < range);
 }
 
-// [[Rcpp::export('.rasterMaker')]]
 Rcpp::NumericVector rasterMaker(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen,int sizeOfList, int degree, bool block) {
   Rcpp::NumericVector out(nCols*pow(100, degree)*nRows);
   
@@ -54,7 +53,6 @@ Rcpp::NumericVector rasterMaker(Rcpp::DataFrame df, int minX, int maxY, int nCol
   return out;
 }
 
-// [[Rcpp::export('.rasterMakerAdjust')]]
 Rcpp::NumericVector rasterMakerAdjust(Rcpp::DataFrame df, int minX, int maxY, int nCols, int nRows, int sizeOfGen,int sizeOfList, int degree, bool block, int horizontal, int vertical) {
   Rcpp::NumericVector out(nCols*pow(100, degree)*nRows);
   
