@@ -13,7 +13,7 @@ The algorithm is as follows:
 
 2) Initialize diagonals to -1 (-1 will be used in the algorithm as an unecessary comaprison and thus for pruning)
 
-3) For each point, i.e. each row in the matrix, see if any point is less than the spacing parameter in realation to said point
+3) For each point, i.e. each row in the matrix, see if any point is less than the spacing parameter in realation to said point by looking down the column of that point
 
 ---a) If no point is found, do nothing
   
