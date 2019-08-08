@@ -1,6 +1,5 @@
 \name{poThinNum}
 \alias{poThinNum}
-poThinNum
 \title{
 poThinNum
 }
